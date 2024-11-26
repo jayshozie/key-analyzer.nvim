@@ -64,7 +64,7 @@ require("lazy").setup({
 
 
 `:KeyAnalyzer` calls this lua code:
-`require('key-analyzer').show(prefix, mode)` if you wish to map it yourself
+`require('key-analyzer').show(mode, prefix)` if you wish to map it yourself
 
 > **Tip:** Click or move to any key to see its mapping details
 
