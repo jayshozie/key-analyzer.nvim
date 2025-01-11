@@ -19,7 +19,7 @@ local COLEMAK_KEYBOARD_LAYOUT = {
     { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
     { "q", "w", "f", "p", "g", "j", "l", "u", "y", ";", "[", "]" },
     { "a", "r", "s", "t", "d", "h", "n", "e", "i", "o", "'" },
-    { "z", "x", "c", "v", "b", "k", "h", ",", ".", "/" },
+    { "z", "x", "c", "v", "b", "k", "m", ",", ".", "/" },
 }
 -- COLEMAK DH keyboard layout representation
 local COLEMAK_DH_KEYBOARD_LAYOUT = {
