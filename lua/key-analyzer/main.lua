@@ -5,12 +5,28 @@ local main = {}
 
 local current_maps = {}
 
+local KEYBOARD_LAYOUT = {}
 -- QWERTY keyboard layout representation
-local KEYBOARD_LAYOUT = {
+local QWERTY_KEYBOARD_LAYOUT = {
     { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
     { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]" },
     { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'" },
     { "z", "x", "c", "v", "b", "n", "m", ",", ".", "/" },
+}
+
+-- COLEMAK  keyboard layout representation
+local COLEMAK_KEYBOARD_LAYOUT = {
+    { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
+    { "q", "w", "f", "p", "g", "j", "l", "u", "y", ";", "[", "]" },
+    { "a", "r", "s", "t", "d", "h", "n", "e", "i", "o", "'" },
+    { "z", "x", "c", "v", "b", "k", "h", ",", ".", "/" },
+}
+-- COLEMAK DH keyboard layout representation
+local COLEMAK_DH_KEYBOARD_LAYOUT = {
+    { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
+    { "q", "w", "f", "p", "b", "j", "l", "u", "y", ";", "[", "]" },
+    { "a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "'" },
+    { "z", "x", "c", "d", "v", "k", "h", ",", ".", "/" },
 }
 
 -- Row offsets for realistic keyboard layout
@@ -61,11 +77,26 @@ local function get_modified_maps(mode, prefix)
     return maps
 end
 
+-- Set  KEYBOARD_LAYOUT based on selected layout
+local function set_keyboard_layout(layout)
+    vim.notify(vim.inspect(layout))
+    if layout == "qwerty" then
+        KEYBOARD_LAYOUT = QWERTY_KEYBOARD_LAYOUT
+    elseif layout == "colemak" then
+        KEYBOARD_LAYOUT = COLEMAK_KEYBOARD_LAYOUT
+    elseif layout == "colemak-dh" then
+        KEYBOARD_LAYOUT = COLEMAK_DH_KEYBOARD_LAYOUT
+    end
+end
+
 -- Create a visual representation of the keyboard
 local function create_keyboard_visual(maps, mode, modifier)
     local lines = {}
     local highlights = {}
     local config_highlights = _G.KeyAnalyzer.config.highlights
+    local layout = _G.KeyAnalyzer.config.layout
+
+    set_keyboard_layout(layout)
 
     if config_highlights.define_default_highlights then
         -- Create highlight groups for mapped and unmapped keys
@@ -248,6 +279,7 @@ end
 function main.show_keyboard_map(mode, prefix)
     current_maps = get_modified_maps(mode, prefix)
     local visual, highlights = create_keyboard_visual(current_maps, mode, prefix)
+
     show_in_float(visual, highlights, current_maps)
 end
 
