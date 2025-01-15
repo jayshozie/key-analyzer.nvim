@@ -21,6 +21,7 @@ KeyAnalyzer.options = {
         -- If you are using any of the built-in highlight groups you should leave this enabled
         define_default_highlights = true,
     },
+    layout = "qwerty",
 }
 
 ---@private
