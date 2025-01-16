@@ -6,34 +6,36 @@ local main = {}
 local current_maps = {}
 
 local KEYBOARD_LAYOUT = {}
--- QWERTY keyboard layout representation
-local QWERTY_KEYBOARD_LAYOUT = {
-    { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
-    { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]" },
-    { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'" },
-    { "z", "x", "c", "v", "b", "n", "m", ",", ".", "/" },
-}
 
--- COLEMAK  keyboard layout representation
-local COLEMAK_KEYBOARD_LAYOUT = {
-    { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
-    { "q", "w", "f", "p", "g", "j", "l", "u", "y", ";", "[", "]" },
-    { "a", "r", "s", "t", "d", "h", "n", "e", "i", "o", "'" },
-    { "z", "x", "c", "v", "b", "k", "m", ",", ".", "/" },
-}
--- COLEMAK DH keyboard layout representation
-local COLEMAK_DH_KEYBOARD_LAYOUT = {
-    { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
-    { "q", "w", "f", "p", "b", "j", "l", "u", "y", ";", "[", "]" },
-    { "a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "'" },
-    { "z", "x", "c", "d", "v", "k", "h", ",", ".", "/" },
-}
--- AZERTY keyboard layout representation
-local AZERTY_KEYBOARD_LAYOUT = {
-    { "&", "é", '"', "'", "(", "-", "è", "_", "ç", "à", ")", "=" },
-    { "a", "z", "e", "r", "t", "y", "u", "i", "o", "p", "^", "$" },
-    { "q", "s", "d", "f", "g", "h", "j", "k", "l", "m", "ù", "*" },
-    { "w", "x", "c", "v", "b", "n", ",", ";", ":", "!" },
+local AVAILABLE_KEYBOARD_LAYOUTS = {
+    -- QWERTY keyboard layout representation
+    qwerty = {
+        { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
+        { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]" },
+        { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'" },
+        { "z", "x", "c", "v", "b", "n", "m", ",", ".", "/" },
+    },
+    -- COLEMAK  keyboard layout representation
+    colemak = {
+        { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
+        { "q", "w", "f", "p", "g", "j", "l", "u", "y", ";", "[", "]" },
+        { "a", "r", "s", "t", "d", "h", "n", "e", "i", "o", "'" },
+        { "z", "x", "c", "v", "b", "k", "m", ",", ".", "/" },
+    },
+    -- COLEMAK DH keyboard layout representation
+    colemak_dh = {
+        { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
+        { "q", "w", "f", "p", "b", "j", "l", "u", "y", ";", "[", "]" },
+        { "a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "'" },
+        { "z", "x", "c", "d", "v", "k", "h", ",", ".", "/" },
+    },
+    -- AZERTY keyboard layout representation
+    azerty = {
+        { "&", "é", '"', "'", "(", "-", "è", "_", "ç", "à", ")", "=" },
+        { "a", "z", "e", "r", "t", "y", "u", "i", "o", "p", "^", "$" },
+        { "q", "s", "d", "f", "g", "h", "j", "k", "l", "m", "ù", "*" },
+        { "w", "x", "c", "v", "b", "n", ",", ";", ":", "!" },
+    }
 }
 
 -- Row offsets for realistic keyboard layout
@@ -86,15 +88,14 @@ end
 
 -- Set  KEYBOARD_LAYOUT based on selected layout
 local function set_keyboard_layout(layout)
-    vim.notify(vim.inspect(layout))
-    if layout == "qwerty" then
-        KEYBOARD_LAYOUT = QWERTY_KEYBOARD_LAYOUT
-    elseif layout == "colemak" then
-        KEYBOARD_LAYOUT = COLEMAK_KEYBOARD_LAYOUT
-    elseif layout == "colemak-dh" then
-        KEYBOARD_LAYOUT = COLEMAK_DH_KEYBOARD_LAYOUT
-    elseif layout == "azerty" then
-        KEYBOARD_LAYOUT = AZERTY_KEYBOARD_LAYOUT
+    local keyboard = AVAILABLE_KEYBOARD_LAYOUTS[layout]
+    if not keyboard then
+        vim.notify(
+            string.format("Invalid '%s' layout", layout),
+            vim.log.levels.ERROR
+        )
+    else
+        KEYBOARD_LAYOUT = keyboard
     end
 end
 
