@@ -28,6 +28,13 @@ local COLEMAK_DH_KEYBOARD_LAYOUT = {
     { "a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "'" },
     { "z", "x", "c", "d", "v", "k", "h", ",", ".", "/" },
 }
+-- AZERTY keyboard layout representation
+local AZERTY_KEYBOARD_LAYOUT = {
+    { "&", "é", '"', "'", "(", "-", "è", "_", "ç", "à", ")", "=" },
+    { "a", "z", "e", "r", "t", "y", "u", "i", "o", "p", "^", "$" },
+    { "q", "s", "d", "f", "g", "h", "j", "k", "l", "m", "ù", "*" },
+    { "w", "x", "c", "v", "b", "n", ",", ";", ":", "!" },
+}
 
 -- Row offsets for realistic keyboard layout
 local ROW_OFFSETS = {
@@ -86,6 +93,8 @@ local function set_keyboard_layout(layout)
         KEYBOARD_LAYOUT = COLEMAK_KEYBOARD_LAYOUT
     elseif layout == "colemak-dh" then
         KEYBOARD_LAYOUT = COLEMAK_DH_KEYBOARD_LAYOUT
+    elseif layout == "azerty" then
+        KEYBOARD_LAYOUT = AZERTY_KEYBOARD_LAYOUT
     end
 end
 
