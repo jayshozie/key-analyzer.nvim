@@ -214,10 +214,22 @@ local function get_key_at_cursor()
     return nil
 end
 
+-- Compute the required window width to display the given keyboard layout
+local function compute_window_width(keyboard)
+    local max_width = 0
+    for index, line in ipairs(keyboard) do
+        local width = (#line * 3) + ROW_OFFSETS[index]
+        if width > max_width then
+            max_width = width
+        end
+    end
+    return max_width
+end
+
 -- Display the keyboard map in a floating window
 local function show_in_float(lines, highlights, maps)
     local buf = vim.api.nvim_create_buf(false, true)
-    local width = 37 -- Increased to accommodate brackets and extra keys
+    local width = compute_window_width(KEYBOARD_LAYOUT)
     local height = #lines + 2
 
     -- Configure buffer
