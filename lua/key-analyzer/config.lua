@@ -24,6 +24,8 @@ KeyAnalyzer.options = {
     -- Keyboard layout to use
     -- Available options are: qwerty, colemak, colemak-dh, azerty, qwertz
     layout = "qwerty",
+    -- Should a link to https://x.com/OtivDev be displayed?
+    promotion = true,
 }
 
 ---@private
