@@ -21,7 +21,11 @@ KeyAnalyzer.options = {
         -- If you are using any of the built-in highlight groups you should leave this enabled
         define_default_highlights = true,
     },
+    -- Keyboard layout to use
+    -- Available options are: qwerty, colemak, colemak-dh, azerty, qwertz
     layout = "qwerty",
+    -- Should a link to https://x.com/OtivDev be displayed?
+    promotion = true,
 }
 
 ---@private

@@ -15,6 +15,13 @@ local AVAILABLE_KEYBOARD_LAYOUTS = {
         { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'" },
         { "z", "x", "c", "v", "b", "n", "m", ",", ".", "/" },
     },
+    -- QWERTZ keyboard layout representation
+    qwertz = {
+        { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ß", "`" },
+        { "q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "ü", "+" },
+        { "a", "s", "d", "f", "g", "h", "j", "k", "l", "ö", "ä", "#" },
+        { "y", "x", "c", "v", "b", "n", "m", ",", ".", "-" },
+    },
     -- COLEMAK  keyboard layout representation
     colemak = {
         { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
@@ -177,11 +184,12 @@ local function create_keyboard_visual(maps, mode, modifier)
     table.insert(lines, string.format("Key: %s", modifier == "leader" and "<leader>" or modifier))
     table.insert(lines, "") -- Empty line
 
-    -- Shameless plug :(
-    table.insert(lines, "For more vim: https://x.com/OtivDev")
-    table.insert(highlights, { group = config_highlights.promo_highlight, pos = { 9, 0, 50 } })
-
-    table.insert(lines, "") -- Empty line
+    if _G.KeyAnalyzer.config.promotion then
+        -- Shameless plug :(
+        table.insert(lines, "For more vim: https://x.com/OtivDev")
+        table.insert(highlights, { group = config_highlights.promo_highlight, pos = { 9, 0, 50 } })
+        table.insert(lines, "") -- Empty line
+    end
 
     return lines, highlights
 end
