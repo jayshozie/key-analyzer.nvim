@@ -54,7 +54,7 @@ local AVAILABLE_KEYBOARD_LAYOUTS = {
 
 -- Row offsets for realistic keyboard layout
 local ROW_OFFSETS = {
-    1,
+    0,
     1,
     2,
     3,
