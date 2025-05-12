@@ -91,7 +91,7 @@ require("key-analyzer").setup({
     },
 
     -- Keyboard layout to use
-    -- Available options are: qwerty, colemak, colemak-dh, azerty, qwertz
+    -- Available options are: qwerty, colemak, colemak-dh, azerty, qwertz, dvorak
     layout = "qwerty",
 
     -- Should a link to https://x.com/OtivDev be displayed?
@@ -102,7 +102,7 @@ require("key-analyzer").setup({
 ## Limitations
 
  - Not all maps will be shown. For example `<C-W>`, because these built in window maps are not returned by `vim.api.nvim_get_keymap(mode)`. Another example that will not show up are also fold maps (`z`).
- - Currently, `qwerty, colemak, colemak-dh, azerty, qwertz` layouts are supported, but feel free to open a pull request
+ - Currently, `qwerty, colemak, colemak-dh, azerty, qwertz, dvorak` layouts are supported, but feel free to open a pull request
  - There is no differentiation between upper case and lower case letters, both will show on the visualisation
  - Remember: Some keys may not actually be bindable, for example <C-[>
  - KeyAnalyzer retreives mappings with `vim.api.nvim_get_keymap(mode)`, so local buffer mappings are not shown

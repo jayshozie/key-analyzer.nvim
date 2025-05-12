@@ -22,7 +22,7 @@ KeyAnalyzer.options = {
         define_default_highlights = true,
     },
     -- Keyboard layout to use
-    -- Available options are: qwerty, colemak, colemak-dh, azerty, qwertz
+    -- Available options are: qwerty, colemak, colemak-dh, azerty, qwertz, dvorak
     layout = "qwerty",
     -- Should a link to https://x.com/OtivDev be displayed?
     promotion = true,
