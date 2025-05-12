@@ -22,7 +22,7 @@ local AVAILABLE_KEYBOARD_LAYOUTS = {
         { "a", "s", "d", "f", "g", "h", "j", "k", "l", "ö", "ä", "#" },
         { "y", "x", "c", "v", "b", "n", "m", ",", ".", "-" },
     },
-    -- COLEMAK  keyboard layout representation
+    -- COLEMAK keyboard layout representation
     colemak = {
         { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=" },
         { "q", "w", "f", "p", "g", "j", "l", "u", "y", ";", "[", "]" },
@@ -42,6 +42,13 @@ local AVAILABLE_KEYBOARD_LAYOUTS = {
         { "a", "z", "e", "r", "t", "y", "u", "i", "o", "p", "^", "$" },
         { "q", "s", "d", "f", "g", "h", "j", "k", "l", "m", "ù", "*" },
         { "w", "x", "c", "v", "b", "n", ",", ";", ":", "!" },
+    },
+    -- DVORAK keyboard layout representation
+    dvorak = {
+        { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "[", "]" },
+        { "'", ",", ".", "p", "y", "f", "g", "c", "r", "l", "/", "="},
+        { "a", "o", "e", "u", "i", "d", "h", "t", "n", "s", "-"},
+        { "\\", ";", "q", "j", "k", "x", "b", "m", "w", "v", "z" },
     }
 }
 
